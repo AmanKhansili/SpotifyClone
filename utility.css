@@ -1,0 +1,72 @@
+/* 👇 Utility classes Mostilly used 👇 */
+
+ul {
+  list-style-type: none;
+}
+.text-align {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.flex1 {
+  flex-basis: 50%;
+  flex: 1;
+}
+/* Fist, Second and Third Right box */
+.first_box {
+  background: #121212;
+  padding: 20px 24px;
+  border-radius: 10px;
+  flex-basis: 20%;
+}
+
+.second_box {
+  background: #121212;
+  padding: 20px 3px 0 24px;
+  border-radius: 10px;
+  flex-basis: 80%;
+  position: relative;
+}
+
+.third_box {
+  background: #121212;
+  border-radius: 10px;
+}
+
+.m_1 {
+  margin-top: 10px;
+}
+.m {
+  margin: 64px 1vw 0vw 1vw;
+}
+.f_w {
+  font-weight: 700;
+}
+.font_size {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  font-weight: 500;
+}
+.p_absolute {
+  position: absolute;
+}
+
+.p_relative {
+  position: relative;
+}
+
+/* For normal white bg button */
+.btn1 {
+  padding: 12px 32px 12px 32px;
+  border-radius: 25px;
+  border-style: none;
+  color: #656565;
+  font-size: 15px;
+}
+
+
