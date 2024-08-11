@@ -21,12 +21,14 @@
   flex-basis: 23%;
   display: flex;
   flex-direction: column;
+  height: 98vh;
   /* overflow: hidden; */
 }
 
 .right {
   flex-basis: 77%;
   position: relative;
+  height: 98vh;
 }
 
 .home ul li {
@@ -34,6 +36,9 @@
   gap: 15px;
   align-items: center;
   padding-top: 20px;
+}
+.spotifyPlaylist {
+  height: 73%;
 }
 
 .songList ul {
@@ -80,26 +85,21 @@
   width: 100%;
   padding: 0 35px 0 35px;
 }
+
+.cardContainer {
+  height: 93%;
+}
+
 .card {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 300px;
+  grid-template-rows: 270px 270px;
   column-gap: 7px;
-  row-gap: 10px;
-}
-.top {
-  padding: 10px;
-  /* background: #656565; */
-  border-radius: 10px;
-  position: relative;
-}
-.top:hover {
-  background: #656565;
-}
-.top > img {
-  height: 10vw;
-  border-radius: 10px;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #00000000;
 }
 
 .top {
@@ -110,6 +110,11 @@
 
 .top:hover {
   background: #1f1f1f;
+}
+
+.top > img {
+  height: 10vw;
+  border-radius: 10px;
 }
 
 .playButton {
@@ -148,7 +153,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   background: #ffffff;
   color: black;
@@ -163,6 +168,7 @@
   top: 10px;
   width: 95%;
   border-left: hidden;
+  cursor: pointer;
 }
 .circle {
   width: 12px;
