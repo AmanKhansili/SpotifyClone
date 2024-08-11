@@ -1,6 +1,4 @@
-👇 Utility classes Mostilly used 👇
-
-ul {
+👇 Utility classes Mostilly used 👇 ul {
   list-style-type: none;
 }
 .text-align {
@@ -22,14 +20,13 @@ ul {
   background: #121212;
   padding: 20px 24px;
   border-radius: 10px;
-  flex-basis: 20%;
 }
 
 .second_box {
   background: #121212;
   padding: 20px 3px 0 24px;
   border-radius: 10px;
-  flex-basis: 80%;
+  flex: 1;
   position: relative;
 }
 
@@ -42,7 +39,7 @@ ul {
   margin-top: 10px;
 }
 .m {
-  margin: 64px 1vw 0vw 1vw;
+  margin: 4vw 1vw 0vw 1vw;
 }
 .f_w {
   font-weight: 700;
@@ -67,4 +64,4 @@ ul {
   border-style: none;
   color: #656565;
   font-size: 15px;
-}  
+}
