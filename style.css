@@ -44,9 +44,6 @@
   align-items: center;
   padding-top: 20px;
 }
-.spotifyPlaylist {
-  height: 73%;
-}
 
 .songList ul {
   display: flex;
@@ -104,47 +101,53 @@
   display: none;
 }
 
-.cardContainer {
-  height: 93%;
+.spotifyPlaylist {
+  height: 78vh;
 }
 
-.card {
+.cardContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  column-gap: 20px;
   row-gap: 20px;
-  height: 100%;
+  column-gap: 20px;
+  height: 85%;
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: #888888 #00000000;
-  margin-top: 45px;
+  margin-top: 40px;
 }
 
-.top {
-  width: min-content;
+.card {
   padding: 10px;
   border-radius: 10px;
   position: relative;
+  width: 200px;
 }
 
-.top:hover {
+.card:hover {
   background: #1f1f1f;
 }
 
-.top > img {
-  height: 10vw;
+.card > img {
+  width: 100%;
+  object-fit: contain;
   border-radius: 10px;
 }
 
 .playButton {
   position: absolute;
-  top: 7vw;
-  right: 1.7vw;
+  right: 1.5vw;
   opacity: 0;
+  top: 9vw;
   transition: opacity 500ms ease-in-out; /* Smooth transition for opacity and position */
 }
+.card:hover .playButton {
+  opacity: 1;
+  top: 8.5vw;
+}
+
 /* Song button or bar */
 .songButtons {
   filter: invert(1);
@@ -154,26 +157,11 @@
   flex: 1;
 }
 
-.top:hover .playButton {
-  animation: animate 500ms ease-in-out forwards; /* Apply animation on hover of the parent */
-}
-
-@keyframes animate {
-  0% {
-    opacity: 0;
-    top: 7.2vw;
-  }
-  100% {
-    opacity: 1;
-    top: 7vw;
-  }
-}
-
 .playBar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   position: absolute;
   bottom: 0;
   background: #ffffff;
@@ -230,5 +218,25 @@
   }
   .cancle {
     display: block;
+  }
+}
+@media (max-width: 500px) {
+  .card {
+    width: 100%;
+  }
+  .playButton {
+    top: 75vw;
+    right: 3.5vw;
+    animation: none;
+  }
+  .playButton > img {
+    width: 15vw;
+  }
+  .card:hover .playButton {
+    top: 75vw;
+    opacity: 1;
+  }
+  .songBar {
+    flex-direction: column;
   }
 }
