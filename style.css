@@ -7,6 +7,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
 .container {
   background-color: black;
   color: white;
@@ -21,6 +22,15 @@
   flex-basis: 23%;
   display: flex;
   flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancle {
+  display: none;
 }
 
 .right {
@@ -81,6 +91,17 @@
   height: 64px;
   width: 100%;
   padding: 0 35px 0 35px;
+  gap: 20px;
+}
+
+.nav {
+  flex-basis: 50%;
+  flex: 1;
+  margin-top: 7px;
+}
+
+.hamburger {
+  display: none;
 }
 
 .cardContainer {
@@ -158,7 +179,7 @@
   background: #ffffff;
   color: black;
   width: 100%;
-  height: 10%;
+  min-height: 10%;
   border-radius: 0 0 10px 10px;
 }
 
@@ -186,6 +207,28 @@
   width: 95%;
   flex: 1;
 }
+
 .songInfo {
-  flex-basis: 50%;
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .left {
+    background-color: black;
+    padding: 0 10px 0 10px;
+    position: absolute;
+    left: -130%;
+    z-index: 1;
+    transition: all 1s ease-out;
+    height: 98%;
+  }
+  .header {
+    padding: 0 10px 0 10px;
+  }
+  .hamburger {
+    display: block;
+  }
+  .cancle {
+    display: block;
+  }
 }
