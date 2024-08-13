@@ -1,5 +1,6 @@
 console.log("I am working bro");
 let currentSong = new Audio(); // Create a new Audio object to handle song playback
+let songs;
 
 // Function to convert seconds to a formatted string of minutes and seconds
 function secondsToMinutesSeconds(seconds) {
@@ -52,7 +53,7 @@ const playMusic = (track, pause = false) => {
 // Main function to initialize the application
 async function main() {
   //Get the list of all the songs
-  let songs = await getSongs();
+  songs = await getSongs();
   playMusic(songs[0], true);
 
   //Show all the songs in the playlist
