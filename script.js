@@ -116,6 +116,25 @@ async function main() {
   document.querySelector(".cancle").addEventListener("click", () => {
     document.querySelector(".left").style.left = "-130%";
   });
+  //Add event listener for previous and next
+  let previous = document.getElementById("previous");
+  let next = document.getElementById("next");
+
+  previous.addEventListener("click", () => {
+    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+    if (index - 1 >= 0) {
+      playMusic(songs[index - 1]);
+    }
+    console.log(index);
+  });
+
+  next.addEventListener("click", () => {
+    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+    if (index + 1 < songs.length) {
+      playMusic(songs[index + 1]);
+    }
+    console.log(index);
+  });
 }
 
 main();
