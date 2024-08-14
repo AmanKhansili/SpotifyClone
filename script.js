@@ -1,6 +1,7 @@
 console.log("I am working bro");
 let currentSong = new Audio(); // Create a new Audio object to handle song playback
 let songs;
+let currFolder;
 
 // Function to convert seconds to a formatted string of minutes and seconds
 function secondsToMinutesSeconds(seconds) {
@@ -17,9 +18,10 @@ function secondsToMinutesSeconds(seconds) {
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 // Asynchronous function to fetch the list of songs
-async function getSongs() {
+async function getSongs(folder) {
+  currFolder = folder;
   let response = await fetch(
-    "http://127.0.0.1:5500/Projects/Spotify%20clone/songs/"
+    `http://127.0.0.1:3000/Projects/Spotify%20clone/${folder}/`
   );
   let htmlContent = await response.text();
 
@@ -32,7 +34,7 @@ async function getSongs() {
     const element = as[index];
     if (element.href.endsWith(".mp3")) {
       // Check if the href ends with ".mp3"
-      songs.push(element.href.split("/songs/")[1]);
+      songs.push(element.href.split(`/${folder}/`)[1]);
     }
   }
   return songs;
@@ -41,7 +43,7 @@ async function getSongs() {
 const playMusic = (track, pause = false) => {
   // let audio = new Audio("/Projects/Spotify%20clone/songs/" + track);
   console.log(track);
-  currentSong.src = "/Projects/Spotify clone/songs/" + track;
+  currentSong.src = `/Projects/Spotify clone/${currFolder}/` + track;
   if (!pause) {
     currentSong.play();
     play.src = "svg/pause.svg";
@@ -53,7 +55,7 @@ const playMusic = (track, pause = false) => {
 // Main function to initialize the application
 async function main() {
   //Get the list of all the songs
-  songs = await getSongs();
+  songs = await getSongs("songs/ncs");
   playMusic(songs[0], true);
 
   //Show all the songs in the playlist
@@ -137,10 +139,10 @@ async function main() {
   });
 
   //Add an event to volume
-  document.getElementById("range").addEventListener("change", (e)=>{
-    console.log("setting value to " + e.target.value + " /100")
-    currentSong.volume = parseInt(e.target.value)/100;
-  })
+  document.getElementById("range").addEventListener("change", (e) => {
+    console.log("setting value to " + e.target.value + " /100");
+    currentSong.volume = parseInt(e.target.value) / 100;
+  });
 }
 
 main();
