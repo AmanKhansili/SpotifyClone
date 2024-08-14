@@ -65,7 +65,7 @@ async function getSongs(folder) {
 }
 // Function to play or pause a song
 const playMusic = (track, pause = false) => {
-  // let audio = new Audio("/SpotifyClone/songs/" + track);
+  // let audio = new Audio("/Projects/Spotify%20clone/songs/" + track);
   console.log(track);
   currentSong.src = `/SpotifyClone/${currFolder}/` + track;
   if (!pause) {
