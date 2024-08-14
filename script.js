@@ -20,7 +20,9 @@ function secondsToMinutesSeconds(seconds) {
 // Asynchronous function to fetch the list of songs
 async function getSongs(folder) {
   currFolder = folder;
-  let response = await fetch(`/SpotifyClone/${folder}/`);
+  let response = await fetch(
+    `/Spotify%20clone/${folder}/`
+  );
   let htmlContent = await response.text();
 
   let div = document.createElement("div");
@@ -65,9 +67,9 @@ async function getSongs(folder) {
 }
 // Function to play or pause a song
 const playMusic = (track, pause = false) => {
-  // let audio = new Audio("/Projects/Spotify%20clone/songs/" + track);
+  // let audio = new Audio("/Spotify%20clone/songs/" + track);
   console.log(track);
-  currentSong.src = `/SpotifyClone/${currFolder}/` + track;
+  currentSong.src = `/Spotify clone/${currFolder}/` + track;
   if (!pause) {
     currentSong.play();
     play.src = "svg/pause.svg";
@@ -77,7 +79,9 @@ const playMusic = (track, pause = false) => {
 };
 
 async function displayAlbums() {
-  let response = await fetch(`/SpotifyClone/songs/`);
+  let response = await fetch(
+    `/Spotify%20clone/songs/`
+  );
   let htmlContent = await response.text();
 
   let div = document.createElement("div");
@@ -91,7 +95,7 @@ async function displayAlbums() {
       let folder = e.href.split("/").slice(-2)[0];
       //Get the metadata of the folder
       let response = await fetch(
-        `/SpotifyClone/songs/${folder}/info.json`
+        `/Spotify%20clone/songs/${folder}/info.json`
       );
       let htmlContent = await response.json();
       console.log(htmlContent);
