@@ -19,7 +19,7 @@ function secondsToMinutesSeconds(seconds) {
 // Asynchronous function to fetch the list of songs
 async function getSongs() {
   let response = await fetch(
-    "http://127.0.0.1:3000/Projects/Spotify%20clone/songs/"
+    "http://127.0.0.1:5500/Projects/Spotify%20clone/songs/"
   );
   let htmlContent = await response.text();
 
@@ -135,6 +135,12 @@ async function main() {
     }
     console.log(index);
   });
+
+  //Add an event to volume
+  document.getElementById("range").addEventListener("change", (e)=>{
+    console.log("setting value to " + e.target.value + " /100")
+    currentSong.volume = parseInt(e.target.value)/100;
+  })
 }
 
 main();
