@@ -20,9 +20,7 @@ function secondsToMinutesSeconds(seconds) {
 // Asynchronous function to fetch the list of songs
 async function getSongs(folder) {
   currFolder = folder;
-  let response = await fetch(
-    `http://127.0.0.1:3000/Projects/Spotify%20clone/${folder}/`
-  );
+  let response = await fetch(`/Projects/Spotify%20clone/${folder}/`);
   let htmlContent = await response.text();
 
   let div = document.createElement("div");
@@ -62,6 +60,8 @@ async function getSongs(folder) {
       playMusic(e.querySelector(".info").firstElementChild.innerHTML);
     });
   });
+
+  return songs;
 }
 // Function to play or pause a song
 const playMusic = (track, pause = false) => {
@@ -77,9 +77,7 @@ const playMusic = (track, pause = false) => {
 };
 
 async function displayAlbums() {
-  let response = await fetch(
-    `http://127.0.0.1:3000/Projects/Spotify%20clone/songs/`
-  );
+  let response = await fetch(`/Projects/Spotify%20clone/songs/`);
   let htmlContent = await response.text();
 
   let div = document.createElement("div");
@@ -93,7 +91,7 @@ async function displayAlbums() {
       let folder = e.href.split("/").slice(-2)[0];
       //Get the metadata of the folder
       let response = await fetch(
-        `http://127.0.0.1:3000/Projects/Spotify%20clone/songs/${folder}/info.json`
+        `/Projects/Spotify%20clone/songs/${folder}/info.json`
       );
       let htmlContent = await response.json();
       console.log(htmlContent);
@@ -117,6 +115,7 @@ async function displayAlbums() {
   Array.from(document.getElementsByClassName("card")).forEach((e) => {
     e.addEventListener("click", async (item) => {
       songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`);
+      playMusic(songs[0]);
     });
   });
 }
