@@ -20,7 +20,7 @@ function secondsToMinutesSeconds(seconds) {
 // Asynchronous function to fetch the list of songs
 async function getSongs(folder) {
   currFolder = folder;
-  let response = await fetch(`/SpotifyClone/${folder}/`);
+  let response = await fetch(`/projects/SpotifyClone/${folder}/`);
   let htmlContent = await response.text();
 
   let div = document.createElement("div");
@@ -67,7 +67,7 @@ async function getSongs(folder) {
 const playMusic = (track, pause = false) => {
   // let audio = new Audio("/SpotifyClone/songs/" + track);
   console.log(track);
-  currentSong.src = `/SpotifyClone/${currFolder}/` + track;
+  currentSong.src = `/projects/SpotifyClone/${currFolder}/` + track;
   if (!pause) {
     currentSong.play();
     play.src = "svg/pause.svg";
@@ -77,24 +77,26 @@ const playMusic = (track, pause = false) => {
 };
 
 async function displayAlbums() {
-  let response = await fetch(`/SpotifyClone/songs/`);
+  let response = await fetch(`/projects/SpotifyClone/songs/`);
   let htmlContent = await response.text();
-
   let div = document.createElement("div");
   div.innerHTML = htmlContent;
   let anchers = div.getElementsByTagName("a");
   let cardContainer = document.querySelector(".cardContainer");
   let array = Array.from(anchers);
+  // console.log(array.length)
   for (let index = 0; index < array.length; index++) {
     const e = array[index];
-    if (e.href.includes("/songs")) {
-      let folder = e.href.split("/").slice(-2)[0];
+    if (e.href.includes("/songs/")) {
+      console.log(e.href.split("/").slice(-1)[0]);
+      let folder = e.href.split("/").slice(-1)[0];
+      console.log(`here is folder ${folder}`);
       //Get the metadata of the folder
       let response = await fetch(
-        `/SpotifyClone/songs/${folder}/info.json`
+        `/projects/SpotifyClone/songs/${folder}/info.json`
       );
       let htmlContent = await response.json();
-      console.log(htmlContent);
+      // console.log(htmlContent);
       cardContainer.innerHTML =
         cardContainer.innerHTML +
         `<div data-folder="${folder}" class="card">
